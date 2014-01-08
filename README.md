@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/patentscope.png)](http://badge.fury.io/rb/patentscope)
 [![Code Climate](https://codeclimate.com/github/cantab/patentscope.png)](https://codeclimate.com/github/cantab/patentscope)
 
-Gem to allow easy access to data from the WIPO Patentscope Web Service.
+Gem to allow easy access to data from the WIPO PATENTSCOPE Web Service.
 
 ## Introduction
 
