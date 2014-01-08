@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Patentscope::VERSION
   gem.authors       = ["Chong-Yee Khoo"]
   gem.email         = ["mail@cykhoo.com"]
-  gem.description   = %q{Ruby interface to the Patentscope Webservice provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
-  gem.summary       = %q{Ruby interface with WIPO Patentscope Webservice}
+  gem.description   = %q{Ruby interface to the PATENTSCOPE Web Service provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
+  gem.summary       = %q{Ruby interface with WIPO PATENTSCOPE Web Service}
   gem.homepage      = "http://www.cantab-ip.com"
 
   gem.files         = `git ls-files`.split($/)
