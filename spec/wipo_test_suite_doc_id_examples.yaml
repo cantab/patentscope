@@ -1,0 +1,298 @@
+passes:
+  -
+    doc_id: '090063618004ca88'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca89'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca7c'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca7d'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca8b'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca8d'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180050716'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca8f'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618004ca90'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618006d63c'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618006d508'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618006d509'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618006d50a'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180078779'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180078611'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180082aed'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618007f732'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180082aee'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180082c31'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800827c0'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180082aef'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c5e'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c8a'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c8b'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083ca1'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083ca2'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083ca3'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083caa'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083cab'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083cbd'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083cbe'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083cd9'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083cdf'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083d50'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083dac'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083dad'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083de9'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083df8'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083e14'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083e15'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083e4f'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083e50'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083e51'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083ee5'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083f14'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083f15'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083fe8'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083fe9'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800840e0'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800840e1'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084428'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084429'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084490'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084491'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084492'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800844f4'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084577'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084578'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845a1'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845a2'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845b2'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845b3'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845cb'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845cc'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845f5'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845f6'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845f7'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800854a7'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800854f4'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800854f5'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a415'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a416'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a417'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a419'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a41a'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a41b'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084451'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084461'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084462'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084479'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008447a'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800844cc'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800844cd'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800844ce'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180084585'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845d4'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800845d5'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800854a9'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '09006361800854d8'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180085517'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180085518'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008552a'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008552b'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a3bb'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a3bc'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '090063618008a3bd'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c2b'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c2c'
+    signature: '<content>000001.tif</content>'
+  -
+    doc_id: '0900636180083c3c'
+    signature: '<content>000001.tif</content>'
