@@ -1,4 +1,7 @@
 # patentscope gem
+[![Gem Version](https://badge.fury.io/rb/patentscope.png)](http://badge.fury.io/rb/patentscope)
+[![Code Climate](https://codeclimate.com/github/cantab/patentscope.png)](https://codeclimate.com/github/cantab/patentscope)
+
 Gem to allow easy access to data from the WIPO Patentscope Web Service.
 
 ## Introduction
@@ -103,7 +106,7 @@ The `get_iasr` method takes an International Application number, with or without
 
 Example output for SG2003000062:
 
-		Patentscope.get_iasr('SG2003000062')				
+		Patentscope.get_iasr('SG2003000062')
 		#=>
 		<?xml version="1.0"?>
 		<wo-international-application-status>
