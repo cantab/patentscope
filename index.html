@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Patentscope by cantab</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Patentscope</h1>
+        <h2>Gem to allow easy access to data from the WIPO PATENTSCOPE Web Service</h2>
+        <a href="https://github.com/cantab/patentscope" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="patentscope-gem" class="anchor" href="#patentscope-gem"><span class="octicon octicon-link"></span></a>patentscope gem</h1>
+
+<p><a href="http://badge.fury.io/rb/patentscope"><img src="https://badge.fury.io/rb/patentscope.png" alt="Gem Version"></a>
+<a href="https://codeclimate.com/github/cantab/patentscope"><img src="https://codeclimate.com/github/cantab/patentscope.png" alt="Code Climate"></a></p>
+
+<p>Gem to allow easy access to data from the WIPO PATENTSCOPE Web Service.</p>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The Patentscope gem allows easy access, with Ruby, to data provided by the PATENTSCOPE Web Service of the World Intellectual Property Organisation (WIPO).</p>
+
+<p>As provided by WIPO, the PATENTSCOPE Web Service is available through a SOAP interface. The documentation provided by WIPO uses Java.</p>
+
+<p>The Patentscope gem, on the other hand, provides a simple Ruby interface to the PATENTSCOPE Web Service. The gem allows access for each of the functions available from the SOAP interface.</p>
+
+<h2>
+<a name="about-the-wipo-patentscope-web-service" class="anchor" href="#about-the-wipo-patentscope-web-service"><span class="octicon octicon-link"></span></a>About the WIPO PATENTSCOPE Web Service</h2>
+
+<p>From <a href="http://www.wipo.int/patentscope/en/data/products.html">PATENTSCOPE Web Service</a> site:</p>
+
+<p>"Includes:</p>
+
+<ul>
+<li>Bibliographic data for all published international applications (XML format);</li>
+<li>Images for all published international applications (TIFF format);</li>
+<li>Full-text description and claims (OCR output) for all international applications published in English, French, German, Spanish and Russian, as well as Japanese and Korean (soon available) (PDF format).</li>
+</ul><p>Available on the Internet on the day of publication. Programmatic access ... to the documents available in the document tab of the PATENTSCOPE search engine (<a href="http://www.wipo.int/pctdb/en/wo.jsp?WO=2009120859&amp;IA=US2009038389&amp;DISPLAY=DOCS">example</a>). This set makes it possible to integrate access to PATENTSCOPE in an IT architecture, to retrieve the International Application Status Report (IASR) and to parse it on the fly and to download, within the framework of the <a href="http://www.wipo.int/patentscope/en/data/terms.html">authorized uses policy</a>; documents by batch. The formats of the documents are the same as the formats of the documents available via the web site, i.e. TIFF, XML for all documents and a text-based PDF OCR for most pamphlets."</p>
+
+<p>The PATENTSCOPE Web Service is available from the World Intellectual Property Organisation (WIPO) through a <a href="http://www.wipo.int/patentscope/en/data/forms/web_service.jsp">paid subscription</a>. The current cost of a subscription  is 600 Swiss Francs per calendar year.</p>
+
+<p>If you <a href="mailto:patentscope@wipo.int?subject=Request%20for%20Trial%20Trial%20to%20PATENTSCOPE%20Web%20Service">ask nicely</a>, the folks at WIPO might give you a trial account.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'patentscope'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install patentscope
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>Run the configuration block first to set the credentials for the PATENTSCOPE Web Service.</p>
+
+<pre><code>    Patentscope.configure do |config|
+        config.username     = 'username'
+        config.password     = 'password'
+    end
+</code></pre>
+
+<h3>
+<a name="configuring-from-environment-variables" class="anchor" href="#configuring-from-environment-variables"><span class="octicon octicon-link"></span></a>Configuring from Environment Variables</h3>
+
+<p>It is most convenient to store the PATENTSCOPE Web Service username and password credentials as environment variables.</p>
+
+<p>If these are stored as <code>PATENTSCOPE_WEBSERVICE_USERNAME</code> and <code>PATENTSCOPE_WEBSERVICE_PASSWORD</code> respectively, you can simply use</p>
+
+<pre><code>    Patentscope.configure_from_env
+</code></pre>
+
+<p>to load the credentials into the configuration in a single step.</p>
+
+<h3>
+<a name="querying-and-resetting-configuration" class="anchor" href="#querying-and-resetting-configuration"><span class="octicon octicon-link"></span></a>Querying and Resetting Configuration</h3>
+
+<p>The <code>configured?</code> class method returns a boolean indicating whether the configuration has been set. This doesn't necessarily mean that the credentials are valid, only that they have been set.</p>
+
+<pre><code>    Patentscope.configured? #=&gt; true
+</code></pre>
+
+<p>Use the <code>username</code> method of the <code>configuration</code> object to obtain the username set in the configuration.</p>
+
+<pre><code>    Patentscope.configuration.username #=&gt; 'username'
+</code></pre>
+
+<p>The <code>password</code> method of the <code>configuration</code> object returns the password set in the configuration.</p>
+
+<pre><code>    Patentscope.configuration.password #=&gt; 'password'
+</code></pre>
+
+<p>The <code>reset_configuration</code> class method resets the configuration.</p>
+
+<pre><code>    Patentscope.reset_configuration
+    Patentscope.configuration #=&gt; nil
+</code></pre>
+
+<h3>
+<a name="list-of-available-methods" class="anchor" href="#list-of-available-methods"><span class="octicon octicon-link"></span></a>List of Available Methods</h3>
+
+<ul>
+<li><code>get_iasr</code></li>
+<li><code>get_available_documents</code></li>
+<li><code>get_document_content</code></li>
+<li><code>get_document_ocr_content</code></li>
+<li><code>get_document_table_of_contents</code></li>
+<li><code>get_document_content_page</code></li>
+<li><code>wsdl</code></li>
+</ul><h3>
+<a name="getting-the-international-application-status-report-get_iasr" class="anchor" href="#getting-the-international-application-status-report-get_iasr"><span class="octicon octicon-link"></span></a>Getting the International Application Status Report (<code>get_iasr</code>)</h3>
+
+<p>This is possibly the most useful of all the functions provided by this gem.</p>
+
+<p>The <code>get_iasr</code> class method returns an International Application Status Report in XML format for the specified application number. The IASR document is essentially a bibliographic summary of the PCT application in XML format.</p>
+
+<p>The <code>get_iasr</code> method takes an International Application number, with or without the PCT prefix and with or without slashes.</p>
+
+<pre><code>    Patentscope.get_iasr('SG2003000062')
+    Patentscope.get_iasr('SG2003/000062')
+    Patentscope.get_iasr('PCTSG2003000062')
+    Patentscope.get_iasr('PCT/SG2003/000062')
+</code></pre>
+
+<p>Example output for SG2003000062:</p>
+
+<pre><code>    Patentscope.get_iasr('SG2003000062')
+    #=&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;wo-international-application-status&gt;
+        &lt;wo-bibliographic-data produced-by="IB" dtd-version="0.2" lang="EN" date-produced="20140108"&gt;
+            &lt;publication-reference&gt;
+            &lt;document-id lang="EN"&gt;
+                &lt;country&gt;WO&lt;/country&gt;
+                &lt;doc-number&gt;2009/105044&lt;/doc-number&gt;
+                &lt;kind&gt;A1&lt;/kind&gt;
+                &lt;date&gt;20090827&lt;/date&gt;
+            &lt;/document-id&gt;
+            &lt;/publication-reference&gt;
+            &lt;wo-publication-info&gt;...
+</code></pre>
+
+<p>The PATENTSCOPE Web Service doesn't allow us to access documents using WO publication numbers. Calling <code>Patentscope.get_iasr('WO2003/080231')</code> for example will fail.</p>
+
+<h3>
+<a name="getting-a-list-of-available-documents-get_available_documents" class="anchor" href="#getting-a-list-of-available-documents-get_available_documents"><span class="octicon octicon-link"></span></a>Getting a List of Available Documents (<code>get_available_documents</code>)</h3>
+
+<p>The <code>get_available_documents</code> class method returns the list of available documents for the specified application number.</p>
+
+<pre><code>    Patentscope.get_available_documents('SG2009000062')
+    # =&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;doc ocrPresence="no" docType="RO101" docId="id00000008679651"/&gt;
+</code></pre>
+
+<h3>
+<a name="getting-the-binary-content-of-a-document-get_document_content" class="anchor" href="#getting-the-binary-content-of-a-document-get_document_content"><span class="octicon octicon-link"></span></a>Getting the Binary Content of a Document (<code>get_document_content</code>)</h3>
+
+<p>The <code>get_document_content</code> class method returns the binary content of the document for the specified document id.</p>
+
+<pre><code>    Patentscope.get_document_content('090063618004ca88')
+    #=&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;documentContent&gt;UEsDBBQACAAIAIyMOy0AAAAAAAAAAAAAAAAKAAAAMDAwMDAxLnRpZsy7ezxU2 ...
+</code></pre>
+
+<h3>
+<a name="getting-the-text-of-a-document-in-pdf-format-get_document_ocr_content" class="anchor" href="#getting-the-text-of-a-document-in-pdf-format-get_document_ocr_content"><span class="octicon octicon-link"></span></a>Getting the Text of a Document in PDF Format (<code>get_document_ocr_content</code>)</h3>
+
+<p>The <code>get_document_ocr_content</code> class method returns the binary content of the document for the specified document id, in text-based PDF format (high quality OCR).</p>
+
+<pre><code>    Patentscope.get_document_ocr_content('id00000015801579')
+    =&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;documentContent&gt;JVBERi0xLjQKJeLjz9MKOCAwIG9iago8PC9EZWNvZGVQYXJtcyA8PC9CbG ...
+</code></pre>
+
+<h3>
+<a name="getting-a-list-of-page-ids-for-a-document-get_document_table_of_contents" class="anchor" href="#getting-a-list-of-page-ids-for-a-document-get_document_table_of_contents"><span class="octicon octicon-link"></span></a>Getting a List of Page IDs for a Document (<code>get_document_table_of_contents</code>)</h3>
+
+<p>The <code>get_document_table_of_contents</code> class method returns the list of page ids for the specified document id.</p>
+
+<pre><code>    Patentscope.get_document_table_of_contents('090063618004ca88')
+    #=&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;content&gt;000001.tif&lt;/content&gt;
+</code></pre>
+
+<h3>
+<a name="getting-the-binary-content-for-a-document-and-page-get_document_content_page" class="anchor" href="#getting-the-binary-content-for-a-document-and-page-get_document_content_page"><span class="octicon octicon-link"></span></a>Getting the Binary Content for a Document and Page (<code>get_document_content_page</code>)</h3>
+
+<p>The <code>get_document_content_page</code> class method returns the binary content for specified document and page ids.</p>
+
+<pre><code>    Patentscope.get_document_content_page('090063618004ca88', '000001.tif')
+    #=&gt;
+    &lt;?xml version="1.0"?&gt;
+        &lt;pageContent&gt;SUkqAAgAAAASAP4ABAABAAAAAAAAAAABAwABAAAA&lt;/pageContent&gt;
+</code></pre>
+
+<h3>
+<a name="getting-a-wsdl-document-for-the-web-service-wsdl" class="anchor" href="#getting-a-wsdl-document-for-the-web-service-wsdl"><span class="octicon octicon-link"></span></a>Getting a WSDL Document for the Web Service (<code>wsdl</code>)</h3>
+
+<p>The <code>wsdl</code> method returns a WSDL document for the PATENTSCOPE Web Service</p>
+
+<pre><code>    Patentscope.wsdl
+    #=&gt;
+    &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+    ...
+    &lt;wsdl:definitions...
+</code></pre>
+
+<h3>
+<a name="errors" class="anchor" href="#errors"><span class="octicon octicon-link"></span></a>Errors</h3>
+
+<ul>
+<li>NoCredentialsError - attempting to use the client when no credentials were entered</li>
+<li>WrongCredentialsError - attempting to access the PATENTSCOPE Webservice with incorrect credentials</li>
+<li>NoAppNumberError - no application numbere was entered, or unable to convert number</li>
+<li>NoDocIDError - no document id was entered</li>
+<li>NoPageIDError - no page id was entered</li>
+<li>BusinessError - PATENTSCOPE Webservice returned a "business error"</li>
+</ul><h2>
+<a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer</h2>
+
+<p>The Patentscope gem is not an official product of the World Intellectual Property Organization. No warranty is attached to the provision of this gem. Please use this gem at your own risk.</p>
+
+<p>You are solely responsible for ensuring that any uses are suitable, authorized and otherwise legal. In particular, you are solely responsible for maintaining a subscription at WIPO and adhering to WIPO's terms of use for the PATENTSCOPE Web Service.</p>
+
+<p>Please note the <a href="http://www.wipo.int/patentscope/en/data/terms.html">Terms and Conditions</a> relating to use of the PATENTSCOPE Web Service, especially Section 3.2 ("authorized uses", i.e., fewer than 10 retrieval related actions per minute from an individual IP address of a subscriber).</p>
+
+<h2>
+<a name="support" class="anchor" href="#support"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p>I am happy to help with any queries in relation to the Patentscope gem. Please file an issue on the Github repo and I will try my best to help.</p>
+
+<p><strong>I am unable to answer any queries on the PATENTSCOPE Web Service itself</strong>.</p>
+
+<p>For support on the PATENTSCOPE Web Service, please see the resources in the section below, visit the <a href="http://wipo-patentscope-forum.2944828.n2.nabble.com">PATENTSCOPE Forum</a> or send an email to WIPO at <a href="mailto:patentscope@wipo.int">patentscope@wipo.int</a></p>
+
+<h2>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<h3>
+<a name="patentscope-web-service" class="anchor" href="#patentscope-web-service"><span class="octicon octicon-link"></span></a>PATENTSCOPE Web Service</h3>
+
+<ul>
+<li><a href="http://www.wipo.int/patentscope/en/data/products.html">PATENTSCOPE Web Service</a></li>
+<li><a href="http://www.wipo.int/patentscope/en/data/terms.html">Terms and Conditions</a></li>
+<li><a href="http://www.wipo.int/patentscope/en/data/forms/web_service.jsp">Subscription Form</a></li>
+<li><a href="http://www.wipo.int/patentscope/en/news/pctdb/">News</a></li>
+<li>
+<a href="http://www.wipo.int/edocs/mdocs/pct/en/wipo_pct_mow_12/wipo_pct_mow_12_ref_pctpatentscope.pdf">PCT PATENTSCOPE Web-services for Offices</a> (Presentation by WIPO)</li>
+</ul><h3>
+<a name="patentscope-search-system" class="anchor" href="#patentscope-search-system"><span class="octicon octicon-link"></span></a>PATENTSCOPE Search System</h3>
+
+<ul>
+<li><a href="http://www.wipo.int/patentscope/en/">PATENTSCOPE</a></li>
+<li><a href="http://patentscope.wipo.int/search/">Search Interface</a></li>
+<li><a href="http://www.wipo.int/patentscope/en/webinar/">Webinars</a></li>
+<li><a href="http://wipo-patentscope-forum.2944828.n2.nabble.com">Forum</a></li>
+</ul><h2>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>Comments and bug reports are welcome.</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Feel free to drop us a line to let us know you would like to work on something or if you have an idea. Otherwise, fork, code, commit, push and create pull request, <em>viz</em>:</p>
+
+<ol>
+<li>Create a fork of the repo from <a href="http://github.com/cantab/patentscope">http://github.com/cantab/patentscope</a>.</li>
+<li>Create your feature branch (<code>git checkout -b new-feature</code>).</li>
+<li>Write some tests (in RSpec, if you please).</li>
+<li>Write the code that allows the tests to pass.</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>).</li>
+<li>Push to the branch (<code>git push origin new-feature</code>).</li>
+<li>Create a new <a href="https://help.github.com/articles/using-pull-requests">Pull Request</a>.</li>
+</ol><p>More details on how to contribute can be found at this great Thoughtbot blogpost <a href="http://robots.thoughtbot.com/8-new-steps-for-fixing-other-peoples-code">8 (new) steps for fixing other people's code</a>.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2013-2014 Chong-Yee Khoo. All rights reserved.</p>
+
+<p>MIT License</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/cantab/patentscope/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/cantab/patentscope/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/cantab/patentscope"></a> is maintained by <a href="https://github.com/cantab">cantab</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
