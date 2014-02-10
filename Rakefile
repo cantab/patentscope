@@ -20,7 +20,14 @@ namespace :spec do
     task.pattern = "./spec/**/*_spec.rb"
     task.rspec_opts = '--tag more'
   end
+end
 
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  require 'patentscope'
+  ARGV.clear
+  IRB.start
 end
 
 task default: :spec
