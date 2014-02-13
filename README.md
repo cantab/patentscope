@@ -205,6 +205,10 @@ For support on the PATENTSCOPE Web Service, please see the resources in the sect
 
 ## Resources
 
+### Web App Using Patentscope Gem
+
+* The [PCT National Phase](http://guides.cantab-ip.com/singapore-national-phase) Guide fetches IASR data from WIPO PATENTSCOPE and displays a customised guide for the national phase entry of a PCT application
+
 ### PATENTSCOPE Web Service
 * [PATENTSCOPE Web Service](http://www.wipo.int/patentscope/en/data/products.html)
 * [Terms and Conditions](http://www.wipo.int/patentscope/en/data/terms.html)
