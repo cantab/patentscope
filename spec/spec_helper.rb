@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.setup(:default, :development)
 
+require 'dotenv'
+Dotenv.load
 require 'patentscope'
 require 'rspec'
 require 'vcr'

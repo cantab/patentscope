@@ -1,5 +1,6 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
+require 'dotenv/tasks'
 
 desc 'Run RSpec examples (all)'
 
@@ -22,10 +23,11 @@ namespace :spec do
   end
 end
 
-task :console do
+task console: :dotenv do
   require 'irb'
   require 'irb/completion'
   require 'patentscope'
+  Patentscope.configure_from_env
   ARGV.clear
   IRB.start
 end
