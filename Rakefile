@@ -21,6 +21,7 @@ namespace :spec do
     task.pattern = "./spec/**/*_spec.rb"
     task.rspec_opts = '--tag more'
   end
+end
 
 task console: :dotenv do
   require 'irb'
