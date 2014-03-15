@@ -70,7 +70,7 @@ module Patentscope
       describe 'configuration state' do
 
         it 'is not configured' do
-          expect(Patentscope.configured?).to be_falsey
+          expect(Patentscope.configured?).to be false
         end
 
         it 'configuration object is nil' do
@@ -109,7 +109,7 @@ module Patentscope
         describe 'configuration state' do
 
           it 'is configured' do
-            expect(Patentscope.configured?).to_not be_falsey
+            expect(Patentscope.configured?).to be true
           end
 
           it 'configuration object exists' do

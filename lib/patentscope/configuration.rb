@@ -20,9 +20,7 @@ module Patentscope
     end
 
     def configured?
-      configuration &&
-      configuration.username &&
-      configuration.password
+      (configuration && configuration.username && configuration.password)? true : false
     end
 
     def reset_configuration
@@ -38,5 +36,4 @@ module Patentscope
       @password = ''
     end
   end
-
 end
