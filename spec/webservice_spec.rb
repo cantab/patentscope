@@ -40,7 +40,7 @@ module Patentscope
       it 'returns an appropriate XML document for the get_available_documents operation' do
         response = webservice.get_available_documents(ia_number: 'SG2009000062')
         expect(response).to include('<?xml version="1.0"?>')
-        expect(response).to include('<doc ocrPresence="no" docType="RO101" docId="id00000008679651"/>')
+        expect(response).to include('<doc ocrPresence="yes" gazette="35/2009" docType="PAMPH" docId="id00000008693323"/>')
         expect(response).to_not include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
       end
     end
