@@ -17,11 +17,11 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency 'dotenv', '~> 1.0'
-  gem.add_development_dependency 'rake', '~> 10.3'
-  gem.add_development_dependency 'rspec', '~> 3.1'
-  gem.add_development_dependency 'vcr', '~> 2.9.2'
-  gem.add_development_dependency 'webmock', '~> 1.19'
+  gem.add_development_dependency 'dotenv'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'vcr'
+  gem.add_development_dependency 'webmock'
 
   gem.add_runtime_dependency 'nokogiri'
   gem.add_runtime_dependency 'unicode_titlecase'
