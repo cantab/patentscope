@@ -3,6 +3,7 @@ require 'spec_helper'
 module Patentscope
 
   describe WebserviceSoapBuilder, :core do
+
     before { Patentscope.configure_from_env}
 
     let(:ws_soap_builder) { WebserviceSoapBuilder.new }
