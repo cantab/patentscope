@@ -52,8 +52,8 @@ module Patentscope
     end
 
     describe "get_url method" do
-      it "fetches the Cantab website by GET" do
-        site = client.get_url('http://www.cantab-ip.com')
+      it "fetches the Example.org website by GET" do
+        site = client.get_url('http://www.example.org')
         expect(site).to include('<html')
       end
 
