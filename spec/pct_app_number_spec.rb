@@ -149,7 +149,7 @@ module Patentscope
           end
 
           it "does not validate" do
-            expect { pct_app_number.validate }.to raise_error
+            expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
           end
         end
 
@@ -161,7 +161,7 @@ module Patentscope
           end
 
           it "does not validate" do
-            expect { pct_app_number.validate }.to raise_error
+            expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
           end
         end
 
@@ -175,7 +175,7 @@ module Patentscope
             end
 
             it "does not validate" do
-              expect { pct_app_number.validate }.to raise_error
+              expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
             end
           end
 
@@ -187,7 +187,7 @@ module Patentscope
             end
 
             it "does not validate" do
-              expect { pct_app_number.validate }.to raise_error
+              expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
             end
           end
 
@@ -199,7 +199,7 @@ module Patentscope
             end
 
             it "does not validate" do
-              expect { pct_app_number.validate }.to raise_error
+              expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
             end
           end
 
@@ -211,7 +211,7 @@ module Patentscope
             end
 
             it "does not validate" do
-              expect { pct_app_number.validate }.to raise_error
+              expect { pct_app_number.validate }.to raise_error(Patentscope::WrongNumberFormatError)
             end
           end
         end

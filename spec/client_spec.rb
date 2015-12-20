@@ -43,11 +43,11 @@ module Patentscope
     describe "attribute writer methods" do
 
       it "is not possible to set username" do
-        expect { client.username = 'foo' }.to raise_error()
+        expect { client.username = 'foo' }.to raise_error(NoMethodError)
       end
 
       it "is not possible to set password" do
-        expect { client.password = 'foo' }.to raise_error()
+        expect { client.password = 'foo' }.to raise_error(NoMethodError)
       end
     end
 
