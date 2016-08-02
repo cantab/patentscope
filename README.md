@@ -240,7 +240,7 @@ More details on how to contribute can be found at this great Thoughtbot blogpost
 
 ## License
 
-Copyright (c) 2013-2014 Chong-Yee Khoo. All rights reserved.
+Copyright (c) 2013-2016 Chong-Yee Khoo. All rights reserved.
 
 MIT License
 
