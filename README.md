@@ -218,7 +218,7 @@ For support on the PATENTSCOPE Web Service, please see the resources in the sect
 
 ### PATENTSCOPE Search System
 * [PATENTSCOPE](http://www.wipo.int/patentscope/en/)
-* [Search Interface] (http://patentscope.wipo.int/search/)
+* [Search Interface](http://patentscope.wipo.int/search/)
 * [Webinars](http://www.wipo.int/patentscope/en/webinar/)
 * [Forum](http://wipo-patentscope-forum.2944828.n2.nabble.com)
 
