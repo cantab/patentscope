@@ -2,7 +2,7 @@ module Patentscope
 
   class Webservice
 
-    PATENTSCOPE_WEBSERVICE_LOCATION = "http://www.wipo.int/patentscope-webservice/servicesPatentScope"
+    PATENTSCOPE_WEBSERVICE_LOCATION = "http://patentscope.wipo.int/patentscope-webservice/servicesPatentScope"
 
     def wsdl
       send_wsdl_request

@@ -58,16 +58,15 @@ module Patentscope
       end
 
       it "fetches the Patentscope WSDL by GET" do
-        site = client.get_url('http://www.wipo.int/patentscope-webservice/servicesPatentScope?wsdl')
+        site = client.get_url(Patentscope::Webservice::PATENTSCOPE_WEBSERVICE_LOCATION + '?wsdl')
         expect(site).to include('<?xml')
       end
     end
 
     describe "post_url method" do
       it "fetches a URL by POST" do
-        Patentscope.configure_from_env
         soap_envelope_xml = '<?xml version="1.0"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><getIASR xmlns="http://www.wipo.org/wsdl/ps"><iaNumber>SG2009000062</iaNumber></getIASR></S:Body></S:Envelope>'
-        site = client.post_url('http://www.wipo.int/patentscope-webservice/servicesPatentScope', 'text/xml', soap_envelope_xml)
+        site = client.post_url(Patentscope::Webservice::PATENTSCOPE_WEBSERVICE_LOCATION, 'text/xml', soap_envelope_xml)
         expect(site).to include('<?xml')
       end
     end
