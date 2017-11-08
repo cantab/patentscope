@@ -28,6 +28,8 @@ module Patentscope
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         response = http.request(request)
         response.body
+        if response.header["Content-Type"].include? "text/html"
+          response.body
       end
     end
   end

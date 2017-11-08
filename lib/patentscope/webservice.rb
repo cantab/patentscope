@@ -44,7 +44,7 @@ module Patentscope
     def perform_operation(operation, options_hash)
       soap_envelope = soapbuilder.build_envelope(operation, options_hash)
       response = send_soap_request(soap_envelope)
-      if response.include?('This request requires HTTP authentication')
+      if response.include?('Error') && response.include?('Unauthorized')
         raise WrongCredentialsError
       elsif response.include?('Business error during the execution of service')
         raise BusinessError
