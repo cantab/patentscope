@@ -19,130 +19,175 @@ module Patentscope
     describe "strip_envelope method" do
 
       context "getAvailableDocuments operation" do
-        let(:envelope) { '<?xml version="1.0" ?>
-                            <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                              <S:Body>
-                                <getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                  <doc gazette="35/2006" docType="PAMPH" docId="id50000000162179"></doc>
-                                  <doc docType="WOSA" docId="id50000000125420"></doc>
-                                  <doc docType="ETIP1" docId="id50000000329130"></doc>
-                                  <doc priorityNumber="10 2005 008 395.1" docType="PDOC" docId="id50000000116310"></doc> <doc docType="IB304" docId="id50000000116985"></doc>
-                                  <doc docType="ETWOS" docId="id50000000325635">
-                                </doc>
+        let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                            <S:Body>
+                              <getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">
+                                <doc docId="id00000008684397" docType="DECLA" ocrPresence="no"/>
+                                <doc docId="id00000008684400" docType="PDOC" ocrPresence="no" priorityNumber="61/066,671"/>
+                                <doc docId="id00000008684501" docType="IB304" ocrPresence="no"/>
+                                <doc docId="id00000008688844" docType="ISR" ocrPresence="no"/>
+                                <doc docId="id00000008679650" docType="RO146" ocrPresence="no"/>
+                                <doc docId="id00000008679648" docType="RO102" ocrPresence="no"/>
+                                <doc docId="id00000008679649" docType="RO105" ocrPresence="no"/>
+                                <doc docId="id00000008692319" docType="IB311" ocrPresence="no"/>
+                                <doc docId="id00000008684398" docType="RO135" ocrPresence="no"/>
+                                <doc docId="id00000011435292" docType="IPRP2" ocrPresence="no"/>
+                                <doc docId="id00000008684396" docType="IB371" ocrPresence="no"/>
+                                <doc docId="id00000008679647" docType="APBDY" ocrPresence="no"/>
+                                <doc docId="id00000008679673" docType="IB301" ocrPresence="no"/>
+                                <doc docId="id00000011434982" docType="WOSA" ocrPresence="no"/>
+                                <doc docId="id00000010873927" docType="IB308" ocrPresence="no"/>
+                                <doc docId="id00000008814497" docType="IB308" ocrPresence="no"/>
+                                <doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="yes"/>
+                                <doc docId="id00000008679651" docType="RO101" ocrPresence="no"/>
                               </getAvailableDocumentsResponse>
-                          </S:Body></S:Envelope>' }
+                            </S:Body>
+                          </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getAvailableDocuments) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getAvailableDocumentsResponse element" do
-          expect(stripped).to_not include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getAvailableDocumentsResponse element" do
+          expect(stripped).to include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getAvailableDocumentsResponse>')
         end
 
         it "retains the inner elements" do
-          expect(stripped).to include('<doc gazette="35/2006" docType="PAMPH" docId="id50000000162179"/>')
+          expect(stripped).to include('<doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="yes"/>')
+          expect(stripped).to include('<doc docId="id00000008684397" docType="DECLA" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008684400" docType="PDOC" ocrPresence="no" priorityNumber="61/066,671"/>')
+          expect(stripped).to include('<doc docId="id00000008684501" docType="IB304" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008688844" docType="ISR" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008679650" docType="RO146" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008679648" docType="RO102" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008679649" docType="RO105" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008692319" docType="IB311" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008684398" docType="RO135" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000011435292" docType="IPRP2" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008684396" docType="IB371" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008679647" docType="APBDY" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008679673" docType="IB301" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000011434982" docType="WOSA" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000010873927" docType="IB308" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008814497" docType="IB308" ocrPresence="no"/>')
+          expect(stripped).to include('<doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="yes"/>')
+          expect(stripped).to include('<doc docId="id00000008679651" docType="RO101" ocrPresence="no"/>')
         end
       end
 
       context "getDocumentContent operation" do
-        let(:envelope) { '<?xml version="1.0" encoding="utf-8"?>
-                            <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                              <S:Body>
+        let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                            <S:Body>
                                 <getDocumentContentResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                  <documentContent>UEsDBBQACAAIAIyMOy0AAAAAAAAAAAAAAAAKAAAAMDAwMDA...AAAAAA=</documentContent>
+                                    <documentContent>
+                                        <xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:1afdf9a2-eeb8-416c-bb13-35e28fbe10fc-292470@www.wipo.org"/>
+                                    </documentContent>
                                 </getDocumentContentResponse>
-                              </S:Body>
-                            </S:Envelope>' }
+                            </S:Body>
+                          </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getDocumentContent) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getDocumentContentResponse element" do
-          expect(stripped).to_not include('<getDocumentContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getDocumentContentResponse element" do
+          expect(stripped).to include('<getDocumentContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getDocumentContentResponse>')
         end
 
         it "retains the inner elements" do
-          expect(stripped).to include('<documentContent>UEsDBBQACAAIAIyMOy0AAAAAAAAAAAAAAAAKAAAAMDAwMDA...AAAAAA=</documentContent>')
+          expect(stripped).to include('<documentContent>')
+          expect(stripped).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
+          expect(stripped).to include('<documentContent>')
         end
       end
 
       context "getDocumentOcrContent operation" do
-        let(:envelope) { '<?xml version="1.0" encoding="utf-8"?>
-                            <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                              <S:Body>
-                                <getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                  <documentContent>JVBERi0xLjQKJeLjz9MKOCAwIG9iago8P...DUKJSVFT0YK</documentContent>
-                                </getDocumentOcrContentResponse>
-                              </S:Body>
-                            </S:Envelope>' }
+        let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                            <S:Body>
+                              <getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">
+                                <documentContent>
+                                  <xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:1afdf9a2-eeb8-416c-bb13-35e28fbe10fc-292537@www.wipo.org"/>
+                                </documentContent>
+                              </getDocumentOcrContentResponse>
+                            </S:Body>
+                          </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getDocumentOcrContent) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getDocumentOcrContentResponse element" do
-          expect(stripped).to_not include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getDocumentOcrContentResponse element" do
+          expect(stripped).to include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getDocumentOcrContentResponse>')
         end
 
         it "retains the inner elements" do
-          expect(stripped).to include('<documentContent>JVBERi0xLjQKJeLjz9MKOCAwIG9iago8P...DUKJSVFT0YK</documentContent>')
+          expect(stripped).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
         end
       end
 
       context "getIASR operation" do
-         let(:envelope) { '<?xml version="1.0" encoding="utf-8"?>
-                          <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                            <S:Body>
-                              <getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                <wo-international-application-status>baz</wo-international-application-status>
-                              </getIASRResponse>
-                            </S:Body>
-                          </S:Envelope>' }
+         let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                             <S:Body>
+                               <getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">
+                                 <wo-international-application-status>baz</wo-international-application-status>
+                               </getIASRResponse>
+                             </S:Body>
+                           </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getIASR) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getIASRResponse element" do
-          expect(stripped).to_not include('<getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getIASRResponse element" do
+          expect(stripped).to include('<getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getIASRResponse')
         end
 
         it "retains the inner elements" do
@@ -151,30 +196,32 @@ module Patentscope
       end
 
       context "getDocumentTableOfContents operation" do
-        let(:envelope) { '<?xml version=\'1.0\' encoding=\'UTF-8\'?>
-                            <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                              <S:Body>
-                                <getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                  <content>000001.tif</content>
-                                </getDocumentTableOfContentsResponse>
-                              </S:Body>
-                            </S:Envelope>' }
+        let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                            <S:Body>
+                              <getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">
+                                <content>000001.tif</content>
+                              </getDocumentTableOfContentsResponse>
+                            </S:Body>
+                          </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getDocumentTableOfContents) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getDocumentTableOfContentsResponse element" do
-          expect(stripped).to_not include('<getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getDocumentTableOfContentsResponse element" do
+          expect(stripped).to include('<getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getDocumentTableOfContentsResponse')
         end
 
         it "retains the inner elements" do
@@ -183,34 +230,38 @@ module Patentscope
       end
 
       context "getDocumentContentPage operation" do
-        let(:envelope) { '<?xml version="1.0" encoding="utf-8"?>
-                            <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-                              <S:Body>
-                                <getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">
-                                  <pageContent>SUkqAAgAAAASAP4ABAABAAAAAAAAAAABAwABAAAAqwk...//wAQAQAQAQ==</pageContent>
-                                </getDocumentContentPageResponse>
-                              </S:Body>
-                            </S:Envelope>' }
+        let(:envelope) { '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                            <S:Body>
+                              <getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">
+                                <pageContent>
+                                  <Include xmlns="http://www.w3.org/2004/08/xop/include" href="cid:e4c25938-e5a2-4159-996f-3165f8992e34@example.jaxws.sun.com"/>
+                                </pageContent>
+                              </getDocumentContentPageResponse>
+                            </S:Body>
+                          </S:Envelope>' }
         let(:stripped) { ws_soap_stripper.strip_envelope(envelope, :getDocumentContentPage) }
 
-        it "retains the xml declaration" do
-          expect(stripped).to include('<?xml')
+        it "adds an xml declaration" do
+          expect(stripped).to include('<?xml version="1.0" encoding="UTF-8"?>')
         end
 
         it "strips the Envelope element" do
           expect(stripped).to_not include('<S:Envelope')
+          expect(stripped).to_not include('</S:Envelope')
         end
 
         it "strips the Body element" do
           expect(stripped).to_not include('<S:Body>')
+          expect(stripped).to_not include('</S:Body>')
         end
 
-        it "strips the getDocumentContentPageResponse element" do
-          expect(stripped).to_not include('<getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        it "retains the getDocumentContentPageResponse element" do
+          expect(stripped).to include('<getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">')
+          expect(stripped).to include('</getDocumentContentPageResponse')
         end
 
         it "retains the inner elements" do
-          expect(stripped).to include('<pageContent>SUkqAAgAAAASAP4ABAABAAAAAAAAAAABAwABAAAAqwk...//wAQAQAQAQ==</pageContent>')
+          expect(stripped).to include('Include xmlns="http://www.w3.org/2004/08/xop/include" href="cid:')
         end
       end
     end

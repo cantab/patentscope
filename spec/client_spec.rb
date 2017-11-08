@@ -67,7 +67,7 @@ module Patentscope
       it "fetches a URL by POST" do
         soap_envelope_xml = '<?xml version="1.0"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><getIASR xmlns="http://www.wipo.org/wsdl/ps"><iaNumber>SG2009000062</iaNumber></getIASR></S:Body></S:Envelope>'
         site = client.post_url(Patentscope::Webservice::PATENTSCOPE_WEBSERVICE_LOCATION, 'text/xml', soap_envelope_xml)
-        expect(site).to include('<?xml')
+        expect(site).to include('<getIASRResponse')
       end
     end
   end

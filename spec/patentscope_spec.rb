@@ -33,58 +33,58 @@ module Patentscope
     describe "get_available_documents method" do
       it 'returns an appropriate XML document for the get_available_documents operation' do
         response = patentscope.get_available_documents('SG2009000062')
-        expect(response).to include('<?xml version="1.0"?>')
-        expect(response).to include('<doc ocrPresence="yes" gazette="35/2009" docType="PAMPH" docId="id00000008693323"/>')
-        expect(response).to_not include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="yes"/>')
       end
     end
 
     describe "get_document_content method" do
       it 'returns an appropriate XML document for the get_document_content operation' do
         response = patentscope.get_document_content('090063618004ca88')
-        expect(response).to include('<?xml version="1.0"?>')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getDocumentContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
         expect(response).to include('<documentContent>')
-        expect(response).to include('nRpZsy7ezxU2/8/fk5JM6HIXReMWymXUCmhYcRgUIjjNk2pDAkdlxox7xiSLm')
-        expect(response).to_not include('<getDocumentContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
       end
     end
 
     describe "get_document_ocr_content method" do
       it 'returns an appropriate XML document for the get_document_ocr_content operation' do
         response = patentscope.get_document_ocr_content('id00000015801579')
-        expect(response).to include('<?xml version="1.0"?>')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
         expect(response).to include('<documentContent>')
-        expect(response).to include('XdDb9Ain4kev61wgZc36X022QPCEZZASS2Rwpcy4Hx7I5GYHhriRwpsDwoX9tgjgZwcEGGEksgthsHsNtkFmyGZYQIGGCCX3dhggRDTgEEDNgVgkvuw2ECDDSYMEF')
-        expect(response).to_not include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
       end
     end
 
     describe "get_iasr method" do
       it 'returns an appropriate XML document for the get_iasr operation' do
         response = patentscope.get_iasr('SG2009000062')
-        expect(response).to include('<?xml version="1.0"?>')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">')
         expect(response).to include('<wo-international-application-status>')
         expect(response).to include('MESENCHYMAL STEM CELL PARTICLES')
-        expect(response).to_not include('<getIASRResponse xmlns="http://www.wipo.org/wsdl/ps">')
       end
     end
 
     describe "get_document_table_of_contents method" do
       it 'returns an appropriate XML document for the get_document_table_of_contents operation' do
         response = patentscope.get_document_table_of_contents('090063618004ca88')
-        expect(response).to include('<?xml version="1.0"?>')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
         expect(response).to include('<content>')
         expect(response).to include('<content>000001.tif</content>')
-        expect(response).to_not include('<getDocumentTableOfContentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
       end
     end
 
     describe "get_document_content_page method" do
       it 'returns an appropriate XML document for the get_document_content_page operation' do
         response = patentscope.get_document_content_page('090063618004ca88', '000001.tif')
-        expect(response).to include('<?xml version="1.0"?>')
-        expect(response).to include('+GP0kv9dhgiY7Rb5h2q4RN6Jj9NpDCJjuMImO0l0TfLe7QRO2yFceTvvTu6C6qTH')
-        expect(response).to_not include('<getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
+        expect(response).to include('<getDocumentContentPageResponse xmlns="http://www.wipo.org/wsdl/ps">')
+        expect(response).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
       end
     end
   end
