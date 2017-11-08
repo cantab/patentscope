@@ -39,7 +39,7 @@ module Patentscope
     end
 
     after(:each) do
-      Patentscope.reset_configuration
+      Patentscope.configure_from_env
     end
 
     describe 'class methods' do
