@@ -5,6 +5,7 @@ module Patentscope
   require 'patentscope/configuration'
   require 'patentscope/webservice'
   require 'patentscope/webservice_soap_builder'
+  require 'patentscope/webservice_soap_stripper'
   require 'patentscope/pct_doc_number'
 
   class NoCredentialsError < StandardError; end

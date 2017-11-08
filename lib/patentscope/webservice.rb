@@ -49,7 +49,7 @@ module Patentscope
       elsif response.include?('Business error during the execution of service')
         raise BusinessError
       else
-        soapbuilder.strip_envelope(response, operation)
+        soapstripper.strip_envelope(response, operation)
       end
     end
 
@@ -69,6 +69,10 @@ module Patentscope
 
     def soapbuilder
       WebserviceSoapBuilder.new
+    end
+
+    def soapstripper
+      WebserviceSoapStripper.new
     end
   end
 end
