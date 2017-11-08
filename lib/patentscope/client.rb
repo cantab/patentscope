@@ -27,9 +27,11 @@ module Patentscope
 
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         response = http.request(request)
-        response.body
         if response.header["Content-Type"].include? "text/html"
           response.body
+        elsif response.header["Content-Type"].include? "multipart/related"
+          response.body.split("\r\n\r\n")[1].split("\r\n")[0]
+        end
       end
     end
   end
