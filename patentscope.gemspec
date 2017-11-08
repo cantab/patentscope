@@ -1,28 +1,32 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'patentscope/version'
 
-Gem::Specification.new do |gem|
-  gem.name          = "patentscope"
-  gem.version       = Patentscope::VERSION
-  gem.authors       = ["Chong-Yee Khoo"]
-  gem.email         = ["mail@cykhoo.com"]
-  gem.description   = %q{Ruby interface to the PATENTSCOPE Web Service provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
-  gem.summary       = %q{Ruby interface with WIPO PATENTSCOPE Web Service}
-  gem.homepage      = "http://www.cantab-ip.com"
+Gem::Specification.new do |spec|
+  spec.name          = "patentscope"
+  spec.version       = Patentscope::VERSION
+  spec.licenses      = "MIT"
+  spec.authors       = ["Chong-Yee Khoo"]
+  spec.email         = ["mail@cykhoo.com"]
 
-  gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  spec.summary       = %q{Ruby interface with WIPO PATENTSCOPE Web Service}
+  spec.description   = %q{Ruby interface to the PATENTSCOPE Web Service provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
+  spec.homepage      = "http://www.cantab-ip.com"
 
-  gem.add_development_dependency 'dotenv'
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'vcr'
-  gem.add_development_dependency 'webmock'
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
 
-  gem.add_runtime_dependency 'nokogiri'
-  gem.add_runtime_dependency 'unicode_titlecase'
+  spec.add_development_dependency 'dotenv', '~> 2.2'
+  spec.add_development_dependency 'rake', '~> 12.2'
+  spec.add_development_dependency 'rspec', '~> 3.7'
+  spec.add_development_dependency 'vcr', '~> 3.0'
+  spec.add_development_dependency 'webmock', '~> 3.1'
+
+  spec.add_runtime_dependency 'nokogiri', '~> 1.8'
+  spec.add_runtime_dependency 'unicode_titlecase', '~> 0'
 end
