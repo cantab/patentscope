@@ -26,7 +26,9 @@ module Patentscope
       request.body            = body
 
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
-        response = http.request(request)
+        response      = http.request(request)
+        response.body = response.body.force_encoding("ISO-8859-1").encode("UTF-8")
+
         if response.header["Content-Type"].include? "text/html"
           response.body
         elsif response.header["Content-Type"].include? "multipart/related"
