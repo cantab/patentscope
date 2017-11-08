@@ -18,15 +18,17 @@ module Patentscope
     end
 
     def post_url(url, content_type = 'text/html', body = '')
-      uri                     = URI.parse(url)
-      http                    = Net::HTTP.new(uri.host, uri.port)
-      request                 = Net::HTTP::Post.new(uri.request_uri)
+      uri                     = URI(url)
+      request                 = Net::HTTP::Post.new(uri)
       request.basic_auth(username, password)
       request["User-Agent"]   = USER_AGENT_STRING
       request["Content-Type"] = content_type
       request.body            = body
-      response                = http.request(request)
-      response.body
+
+      Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+        response = http.request(request)
+        response.body
+      end
     end
   end
 end
