@@ -21,12 +21,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'dotenv', '~> 2.2'
-  spec.add_development_dependency 'rake', '~> 12.2'
-  spec.add_development_dependency 'rspec', '~> 3.7'
-  spec.add_development_dependency 'vcr', '~> 3.0'
-  spec.add_development_dependency 'webmock', '~> 3.1'
+  spec.add_development_dependency 'dotenv'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
 
-  spec.add_runtime_dependency 'nokogiri', '~> 1.8'
-  spec.add_runtime_dependency 'unicode_titlecase', '~> 0'
+  spec.add_runtime_dependency 'nokogiri'
+  spec.add_runtime_dependency 'unicode_titlecase'
 end
