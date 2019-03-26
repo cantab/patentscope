@@ -35,7 +35,7 @@ module Patentscope
         response = patentscope.get_available_documents('SG2009000062')
         expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
         expect(response).to include('<getAvailableDocumentsResponse xmlns="http://www.wipo.org/wsdl/ps">')
-        expect(response).to include('<doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="yes"/>')
+        expect(response).to include('<doc docId="id00000008693323" docType="PAMPH" gazette="35/2009" ocrPresence="no"/>')
       end
     end
 
@@ -53,9 +53,7 @@ module Patentscope
       it 'returns an appropriate XML document for the get_document_ocr_content operation' do
         response = patentscope.get_document_ocr_content('id00000015801579')
         expect(response).to include('<?xml version="1.0" encoding="UTF-8"?>')
-        expect(response).to include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps">')
-        expect(response).to include('<documentContent>')
-        expect(response).to include('<xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:')
+        expect(response).to include('<getDocumentOcrContentResponse xmlns="http://www.wipo.org/wsdl/ps"/>')
       end
     end
 
