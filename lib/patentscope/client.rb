@@ -14,7 +14,7 @@ module Patentscope
     end
 
     def get_url(url)
-      open(url, "User-Agent" => USER_AGENT_STRING, http_basic_authentication: [username, password]).read
+      URI.open(url, "User-Agent" => USER_AGENT_STRING, http_basic_authentication: [username, password]).read
     end
 
     def post_url(url, content_type = 'text/html', body = '')

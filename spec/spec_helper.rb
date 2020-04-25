@@ -9,10 +9,9 @@ require 'vcr'
 require 'yaml'
 require 'open-uri'
 
-# generate versions of username and password with unsafe characters encoded
-unsafe_characters = %q[$&+,/:;=?!@ "'<>#%{}|\^~[]`]
-escaped_patentscope_webservice_username = URI::escape(ENV['PATENTSCOPE_WEBSERVICE_USERNAME'], unsafe_characters)
-escaped_patentscope_webservice_password = URI::escape(ENV['PATENTSCOPE_WEBSERVICE_PASSWORD'], unsafe_characters)
+# generate versions of username and password with characters encoded
+escaped_patentscope_webservice_username = URI.encode_www_form_component(ENV['PATENTSCOPE_WEBSERVICE_USERNAME'])
+escaped_patentscope_webservice_password = URI.encode_www_form_component(ENV['PATENTSCOPE_WEBSERVICE_PASSWORD'])
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
