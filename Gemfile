@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.1'
+ruby '3.0.0'
 
 # Specify your gem's dependencies in patentscope.gemspec
 gemspec
