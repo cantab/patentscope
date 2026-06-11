@@ -29,4 +29,14 @@ end
 RSpec.configure do |config|
   # config.treat_symbols_as_metadata_keys_with_true_values = true
   config.order = 'random'
+  more_requested = ARGV.each_cons(2).any? do |option, value|
+    option == '--tag' && value.to_s.match?(/\Amore(?::true)?\z/)
+  end
+  config.filter_run_excluding more: true unless more_requested
+
+  config.before(:example, :more) do
+    username = ENV['PATENTSCOPE_WEBSERVICE_USERNAME'].to_s.strip
+    password = ENV['PATENTSCOPE_WEBSERVICE_PASSWORD'].to_s.strip
+    skip 'PATENTSCOPE web service credentials are not configured' if username.empty? || password.empty?
+  end
 end

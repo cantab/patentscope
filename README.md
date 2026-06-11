@@ -229,9 +229,14 @@ Run the credential-free core suite with:
 
     $ bundle exec rake spec:core
 
-The default `rake` and `rake test` tasks also run the core suite. Live PATENTSCOPE Web Service examples require valid credentials and can be run separately with:
+The default `rake`, `rake test`, and `rspec spec` commands also run the core
+suite. Live PATENTSCOPE Web Service examples require valid credentials and can
+be run separately with:
 
     $ bundle exec rake spec:more
+
+If the PATENTSCOPE credential environment variables are not set, the live
+examples are skipped.
 
 ## Contact
 Comments and bug reports are welcome.
