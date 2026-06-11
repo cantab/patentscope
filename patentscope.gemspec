@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Ruby interface with WIPO PATENTSCOPE Web Service}
   spec.description   = %q{Ruby interface to the PATENTSCOPE Web Service provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
   spec.homepage      = "http://www.cantab-ip.com"
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 4.0.5"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
