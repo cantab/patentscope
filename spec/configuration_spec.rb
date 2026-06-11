@@ -108,8 +108,8 @@ module Patentscope
 
         describe 'configuration state' do
 
-          it 'is configured' do
-            expect(Patentscope.configured?).to be true
+          it 'is not configured' do
+            expect(Patentscope.configured?).to be false
           end
 
           it 'configuration object exists' do
@@ -142,7 +142,7 @@ module Patentscope
           it 'raises an error during client operations' do
             expect do
               Webservice.new.get_iasr(ia_number: 'SG2009000062')
-            end.to raise_error(Patentscope::WrongCredentialsError)
+            end.to raise_error(Patentscope::NoCredentialsError)
           end
         end
       end

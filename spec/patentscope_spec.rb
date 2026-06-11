@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Patentscope
 
-  describe Patentscope, :core, :vcr do
+  describe Patentscope, :more, :vcr do
 
     before { Patentscope.configure_from_env }
 

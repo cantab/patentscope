@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Ruby interface with WIPO PATENTSCOPE Web Service}
   spec.description   = %q{Ruby interface to the PATENTSCOPE Web Service provided by the World Intellectual Property Organisation. Requires a subscription to the Patentscope Web Service}
   spec.homepage      = "http://www.cantab-ip.com"
+  spec.required_ruby_version = ">= 3.0"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -21,12 +22,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'dotenv'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'vcr'
-  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'dotenv', '>= 3.0'
+  spec.add_development_dependency 'rake', '>= 13.0'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'vcr', '~> 6.0'
+  spec.add_development_dependency 'webmock', '~> 3.0'
 
-  spec.add_runtime_dependency 'nokogiri'
-  spec.add_runtime_dependency 'unicode_titlecase'
+  spec.add_runtime_dependency 'nokogiri', '>= 1.15'
 end

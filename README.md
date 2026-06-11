@@ -182,9 +182,10 @@ The `wsdl` method returns a WSDL document for the PATENTSCOPE Web Service
 
 * NoCredentialsError - attempting to use the client when no credentials were entered
 * WrongCredentialsError - attempting to access the PATENTSCOPE Webservice with incorrect credentials
-* NoAppNumberError - no application numbere was entered, or unable to convert number
+* NoAppNumberError - no application number was entered
 * NoDocIDError - no document id was entered
 * NoPageIDError - no page id was entered
+* WrongNumberFormatError - unable to convert an application or publication number
 * BusinessError - PATENTSCOPE Webservice returned a "business error"
 
 ## Disclaimer
@@ -221,6 +222,16 @@ For support on the PATENTSCOPE Web Service, please see the resources in the sect
 * [Search Interface](http://patentscope.wipo.int/search/)
 * [Webinars](http://www.wipo.int/patentscope/en/webinar/)
 * [Forum](http://wipo-patentscope-forum.2944828.n2.nabble.com)
+
+## Testing
+
+Run the credential-free core suite with:
+
+    $ bundle exec rake spec:core
+
+The default `rake` and `rake test` tasks also run the core suite. Live PATENTSCOPE Web Service examples require valid credentials and can be run separately with:
+
+    $ bundle exec rake spec:more
 
 ## Contact
 Comments and bug reports are welcome.

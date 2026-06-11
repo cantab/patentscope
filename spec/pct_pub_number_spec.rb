@@ -152,6 +152,12 @@ module Patentscope
           end
         end
 
+        describe "nil publication number" do
+          it "raises a no application number error" do
+            expect { PctPubNumber.new(nil) }.to raise_error(Patentscope::NoAppNumberError)
+          end
+        end
+
         describe "blank application number" do
           let(:pct_pub_number) { PctPubNumber.new('   ') }
 

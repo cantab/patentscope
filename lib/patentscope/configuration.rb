@@ -20,11 +20,19 @@ module Patentscope
     end
 
     def configured?
-      (configuration && configuration.username && configuration.password)? true : false
+      !!(configuration &&
+         present?(configuration.username) &&
+         present?(configuration.password))
     end
 
     def reset_configuration
       self.configuration = nil
+    end
+
+    private
+
+    def present?(value)
+      !value.to_s.strip.empty?
     end
   end
 

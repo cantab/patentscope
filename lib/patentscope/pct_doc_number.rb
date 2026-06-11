@@ -3,7 +3,7 @@ module Patentscope
   class PctAppNumber < String
 
     def initialize(number = "")
-      raise NoNumberError,
+      raise NoAppNumberError,
         "Patent application number was not entered" if number.nil?
       super(number.strip)
     end
@@ -15,20 +15,19 @@ module Patentscope
     def validate
       raise WrongNumberFormatError,
         "PCT application number is not in correct format (PCT/CCYYYY/NNNNNN)" unless valid?
+      true
     end
 
     def to_ia_number
-      self.upcase!
-      self.gsub!('/', '')
-      self.gsub!('PCT', '')
-      self
+      validate
+      upcase.gsub('/', '').sub(/\APCT/, '')
     end
   end
 
   class PctPubNumber < String
 
     def initialize(number = "")
-      raise NoNumberError,
+      raise NoAppNumberError,
         "Patent publication number was not entered" if number.nil?
       super(number.strip)
     end
@@ -40,6 +39,7 @@ module Patentscope
     def validate
       raise WrongNumberFormatError,
         "PCT publication number is not in correct format (WO/YYYY/NNNNNN)" unless valid?
+      true
     end
   end
 end

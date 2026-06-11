@@ -12,6 +12,10 @@ module Patentscope
   class WrongCredentialsError < StandardError; end
   class BusinessError < StandardError; end
   class WrongNumberFormatError < StandardError; end
+  class NoAppNumberError < WrongNumberFormatError; end
+  class NoDocIDError < WrongNumberFormatError; end
+  class NoPageIDError < WrongNumberFormatError; end
+  NoNumberError = NoAppNumberError
 
   class << self
 
@@ -50,4 +54,3 @@ module Patentscope
     end
   end
 end
-

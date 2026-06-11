@@ -12,7 +12,7 @@ namespace :spec do
 
   RSpec::Core::RakeTask.new(:core) do |task|
     task.pattern = "./spec/**/*_spec.rb"
-    task.rspec_opts = '--tag core'
+    task.rspec_opts = '--tag core --tag ~more'
   end
 
   desc 'Run additional RSpec examples (e.g., integration specs)'
@@ -32,5 +32,5 @@ task console: :dotenv do
   IRB.start
 end
 
-task default: :spec
-task test:    :spec
+task default: 'spec:core'
+task test:    'spec:core'

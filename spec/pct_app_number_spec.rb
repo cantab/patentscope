@@ -153,6 +153,12 @@ module Patentscope
           end
         end
 
+        describe "nil application number" do
+          it "raises a no application number error" do
+            expect { PctAppNumber.new(nil) }.to raise_error(Patentscope::NoAppNumberError)
+          end
+        end
+
         describe "blank application number" do
           let(:pct_app_number) { PctAppNumber.new('   ') }
 
@@ -219,6 +225,16 @@ module Patentscope
     end
 
     describe "to_ia_number method" do
+      it "does not mutate the original number" do
+        pct_app_number = PctAppNumber.new('pct/sg2012/000001')
+        pct_app_number.to_ia_number
+        expect(pct_app_number).to eq('pct/sg2012/000001')
+      end
+
+      it "validates before converting" do
+        expect { PctAppNumber.new('SG201200001').to_ia_number }.to raise_error(Patentscope::WrongNumberFormatError)
+      end
+
       context "uppercase letters" do
         it "converts to an ia_number" do
           expect(PctAppNumber.new('SG2012000001').to_ia_number).to eq('SG2012000001')
